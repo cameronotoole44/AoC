@@ -1,9 +1,17 @@
 def is_invalid_id(n: int) -> bool:
     s = str(n)
-    if len(s) % 2 != 0:
-        return False
-    mid = len(s) // 2
-    return s[:mid] == s[mid:]
+    L = len(s)
+
+    for b in range(1, L // 2 + 1):
+        if L % b != 0:
+            continue
+        block = s[:b]
+        repeats = L // b
+
+        if repeats >= 2 and block * repeats == s:
+            return True
+
+    return False
 
 with open("input.txt") as f:
     text = f.read().strip()
