@@ -10,15 +10,20 @@ def main():
             direction = line[0]
             distance= int(line[1:])
             
-            if direction == 'L':
-                position -= distance
-            else:
-                position += distance
+            step = - 1 if direction == 'L' else 1    
+            for _ in range(distance):
+                position = (position + step ) % 100
+                if position == 0:
+                    zero_count += 1
+            # if direction == 'L':
+            #     position -= distance
+            # else:
+            #     position += distance
 
-            position %= 100
+            # position %= 100
             
-            if position == 0:
-                zero_count += 1
+            # if position == 0:
+            #     zero_count += 1
 
     print(zero_count)
 
